@@ -25,4 +25,12 @@
         </li>
     </ul>
 {{ end }}
+{{ $directories := (split .Page.File "/")}}
+{{ $packageName := index $directories 2 }}
+{{ $moduleName := index $directories 4 }}
+{{ $resourceName := index $directories 5 }}
 <pulumi-top-button></pulumi-top-button>
+<hr />
+<ul class="text-sm list-none">
+    <pulumi-resource-links package-name={{ $packageName }} module-name={{ $moduleName }} resource-name={{ $resourceName }}></pulumi-resource-links>
+</ul>
